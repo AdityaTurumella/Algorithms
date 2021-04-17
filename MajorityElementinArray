@@ -1,0 +1,49 @@
+package arrays;
+
+import java.util.HashMap;
+
+public class MajorityElement {
+    public static void main(String[] args) {
+        int[] arr = new int[]{3,1,3,2,2,2,2,2,2};
+        int count=0;
+        boolean ans=false;
+        //if an element appears more than N/2 times
+//        for(int i=0;i<arr.length;i++){
+//            count=0;
+//            for(int j=0;j<arr.length;j++){
+//                if(arr[i]==arr[j]){
+//                    count++;
+//                    if(count>arr.length/2){
+//                        System.out.println(arr[i]);
+//                        ans=true;
+//                        break;
+//                    }
+//                }
+//                if(ans)
+//                    break;
+//            }
+//        }
+//        if(ans==false)
+//            System.out.println(-1);
+
+        findMajoruty(arr);
+    }
+
+    public static void findMajoruty(int arr[]){
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            if(!map.containsKey(arr[i])){
+                map.put(arr[i],1);
+            }
+            else{
+                map.put(arr[i],map.get(arr[i])+1);
+            }
+        }
+        for(int i=0;i<arr.length;i++){
+            if(map.get(arr[i])>arr.length/2){
+                System.out.println(arr[i]);
+                break;
+            }
+        }
+    }
+}
